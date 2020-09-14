@@ -22,6 +22,8 @@ nltk
 spacy
 gensim
 basilica
+wordsegment
+keras
 
 matplotlib
 plotly
@@ -29,6 +31,7 @@ kaleido # required by plotly to save static images
 squarify
 #pyldavis
 
+progressbar
 
 # formerly known as dev dependencies:
 pytest
