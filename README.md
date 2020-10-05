@@ -19,13 +19,17 @@ Version 1 (works in progress, investigations, archive):
     + [KS Tests v1](/app/retweet_graphs/README.md#KS-Tests)
   + [Retweet Graphs v2](/app/retweet_graphs_v2/README.md)
     + [Bot Classification v3 (Daily Periods)](/app/retweet_graphs_v2/README.md#k-days-bot-classification)
-    + [Community Assignment](/app/bot_communities/README.md#Assignment)
-    + [Community Analysis](/app/bot_communities/README.md#Analysis)
-    + [Bot Follower Graphs](/app/bot_follower_graphs/README.md)
+    + [Bot Communities v1](/app/bot_communities/README.md#Assignment)
+    + [Bot Community Analysis v1](/app/bot_communities/README.md#Analysis)
+      + [Bot Follower Graphs](/app/bot_follower_graphs/README.md)
 
-Version 2 (current, stable, mature):
+Version 2 (reproduction, with some improvements):
 
   + [Tweet Collection v2](/app/tweet_collection_v2/README.md)
+  + [Retweet Graphs v3](/app/retweet_graphs_v3/README.md)
+    + [Bot Classification v4](/app/retweet_graphs_v3/README.md#Bot-Classification)
+    + [Bot Communities v2](/app/retweet_graphs_v3/README.md#Bot-Communities)
+    + [Bot Community Analysis v2](/app/retweet_graphs_v3/README.md#Bot-Community-Analysis)
 
 
 ## Installation

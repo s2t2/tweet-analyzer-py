@@ -1362,6 +1362,31 @@ class BigQueryService():
         job_config = QueryJobConfig(query_parameters=[ScalarQueryParameter("limit", "INT64", int(limit))])
         return self.client.query(sql, job_config=job_config)
 
+    #
+    # RETWEET GRAPHS V3
+    #
+
+    def fetch_retweet_edges_v3(self, start_at=None, end_at=None, topic=None):
+        """For querying against the analysis DB"""
+        sql = f"""
+            SELECT
+                user_id
+                ,retweeted_user_id
+                ,count(distinct status_id) as retweet_count
+            FROM `{self.dataset_address}.tweets`
+            WHERE retweeted_status_id is not null
+                AND user_id <> retweeted_user_id -- excludes people retweeting themselves
+        """
+        if start_at and end_at:
+            sql += f" AND created_at BETWEEN '{start_at}' and '{end_at}' "
+        if topic:
+            sql += f" AND upper(status_text) LIKE '%{topic.upper()}%' "
+        sql += " GROUP BY 1,2 "
+        return self.execute_query(sql)
+
+
+
+
 
 
 if __name__ == "__main__":

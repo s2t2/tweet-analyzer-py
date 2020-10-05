@@ -31,8 +31,9 @@ class FileStorage:
         self.gcs_dirpath = self.compile_gcs_dirpath(self.dirpath)
         self.local_dirpath = self.compile_local_dirpath(self.dirpath)
 
-        #print("-------------------------")
+        print("-------------------------")
         print("FILE STORAGE...")
+        print("   BUCKET:",  self.gcs_service.bucket_name.upper())
         print("   DIRPATH:",  self.dirpath)
         print("   GCS DIRPATH:", self.gcs_dirpath)
         print("   LOCAL DIRPATH:", os.path.abspath(self.local_dirpath))

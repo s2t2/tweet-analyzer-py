@@ -140,10 +140,15 @@ class NetworkClassifier:
         print("... < 50% (NOT BOTS):",    fmt_n(len(df[df["bot_probability"] < 0.5])))
         print("... = 50% (NOT BOTS):",    fmt_n(len(df[df["bot_probability"] == 0.5])))
         print("... > 50% (MAYBE BOTS):",  fmt_n(len(df[df["bot_probability"] > 0.5])))
+        print("... > 60% (MAYBE BOTS):",  fmt_n(len(df[df["bot_probability"] > 0.6])))
+        print("... > 70% (MAYBE BOTS):",  fmt_n(len(df[df["bot_probability"] > 0.7])))
+        print("... > 80% (MAYBE BOTS):",  fmt_n(len(df[df["bot_probability"] > 0.8])))
         print("... > 90% (LIKELY BOTS):", fmt_n(len(df[df["bot_probability"] > 0.9])))
         return df
 
-    def generate_bot_probabilities_histogram(self, img_filepath=None, show_img=True, title="Bot Probability Scores (excludes 0.5)"):
+    def generate_bot_probabilities_histogram(self, img_filepath=None, show_img=None, title="Bot Probability Scores"):
+        show_img = show_img or (APP_ENV == "development")
+
         probabilities = self.bot_probabilities_df["bot_probability"]
         num_bins = round(len(probabilities) / 10)
         counts, bin_edges = np.histogram(probabilities, bins=num_bins) # ,normed=True #> "VisibleDeprecationWarning: Passing `normed=True` on non-uniform bins has always been broken"...
@@ -157,7 +162,7 @@ class NetworkClassifier:
         plt.hist(probabilities[probabilities < 0.5])
         plt.hist(probabilities[probabilities > 0.5])
         plt.grid()
-        plt.xlabel("Bot probability")
+        plt.xlabel("Bot probability (0.5 excluded)")
         plt.ylabel("Frequency")
         plt.title(title)
 
